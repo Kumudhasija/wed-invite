@@ -1,0 +1,37 @@
+.fullscreen-video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0; /* Set z-index to 0 for the container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black; /* Fallback color */
+}
+
+.fullscreen-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the entire container */
+    z-index: -1; /* Keep video behind the buttons */
+}
+
+.play-button, .mute-button {
+    position: absolute;
+    padding: 10px 20px;
+    font-size: 22px;
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1; /* Ensure buttons are on top of video */
+}
+
+.play-button {
+    z-index: 2; /* Higher z-index for play button */
+    
+}

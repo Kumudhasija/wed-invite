@@ -1,0 +1,350 @@
+#envelope {
+  position: relative;
+  width: 280px;
+  height: 180px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  margin-left: auto;
+  margin-right: auto;
+  top: 0px;
+  background-color: #c8a576;
+  box-shadow: 0 4px 20px c8a576(57, 56, 56, 0.186);
+  animation: bounce 2s infinite; /* Bouncing effect when closed */
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-15px); /* Increase upwards movement for smoother bounce */
+  }
+  60% {
+    transform: translateY(-10px); /* Slight bounce */
+  }
+}
+
+body {
+  margin: 0; /* Remove default margin */
+  height: 100vh; /* Full viewport height */
+  background-color: black; /* Fallback color */
+}
+
+.background-image {
+  position: fixed; /* Fix the position to the viewport */
+  top: 0;
+  left: 0;
+  width: 100%; /* Cover full width */
+  height: 100%; /* Cover full height */
+  background-size: cover; /* Cover the entire area */
+  background-position: center; /* Center the background image */
+  opacity: 0.5; /* Adjust the opacity as needed (0 to 1) */
+  z-index: -1; /* Place it behind other elements */
+}
+
+.envelope-wrapper {
+  height: 380px; /* Adjust as needed */
+  position: relative; /* Ensure positioning for the envelope */
+  z-index: 1; /* Bring the envelope above the background */
+  top: 170px;
+}
+
+
+.front {
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: 3;
+}
+
+.flap {
+  border-left: 140px solid transparent;
+  border-right: 140px solid transparent;
+  border-bottom: 82px solid transparent;
+  border-top: 98px solid #c8a576;
+  transform-origin: top;
+}
+
+.pocket {
+  border-left: 140px solid #eadac5;
+  border-right: 140px solid #eadac5;
+  border-bottom: 90px solid #d3bc9a;
+  border-top: 90px solid transparent;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.letter {
+  position: relative;
+  width: 90%; /* Adjusts width to 90% of the envelope */
+  height: 90%; /* Adjusts height to 90% of the envelope */
+  margin-left: auto;
+  margin-right: auto;
+  top: 5%;
+  background-image: url('../../assests/invitation.jpeg'); /* Path to your letter image */
+  background-size: cover; /* Cover the entire div */
+  background-position: center; /* Center the background image */
+  border-radius: 6px;
+  box-shadow: none; /* Remove shadow since it will be an image */
+  overflow: hidden; /* Prevent overflow when closed */
+}
+
+.words {
+  position: absolute;
+  left: 10%;
+  width: 80%;
+  height: 14%;
+  background-color: #eeeff0;
+}
+
+.open .flap {
+  transform: rotatex(180deg);
+  transition: transform 0.4s ease, z-index 0.6s;
+  z-index: 1;
+}
+
+.close .flap {
+  transform: rotatex(0deg);
+  transition: transform 0.4s 0.6s ease, z-index 1s;
+  z-index: 5;
+}
+
+.close .letter {
+  transform: translateY(0px);
+  transition: transform 0.4s ease, z-index 1s;
+  z-index: 1;
+}
+
+.open .letter {
+  transform: translateY(-60px); /* Adjust this value based on your design */
+  transition: transform 0.4s 0.6s ease, z-index 0.6s;
+  z-index: 2;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4); /* Stronger shadow when open */
+}
+
+.hearts {
+  position: absolute;
+  top: 90px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  animation: moveHeartsOut 3s forwards; /* Add animation to move hearts out */
+  animation-delay: 0.5s;
+}
+
+.heart {
+  position: absolute;
+  bottom: 0;
+  right: 10%;
+}
+
+.heart:before, .heart:after {
+  position: absolute;
+  content: '';
+  left: 50px;
+  top: 0;
+  width: 50px;
+  height: 80px;
+  background: #d5b2af;
+  border-radius: 50px 50px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.heart:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+.close .heart {
+  opacity: 0;
+  animation: none;
+}
+
+.a1 {
+  left: 20%;
+  transform: scale(0.1);
+  opacity: 1;
+  animation: slideUp 4s linear 1, sideSway 2s ease-in-out 6 alternate;
+  animation-fill-mode: forwards;
+  animation-delay: 0.7s;
+}
+
+.a2 {
+  left: 55%;
+  transform: scale(0.05);
+  opacity: 1;
+  animation: slideUp 5s linear 1, sideSway 4s ease-in-out 6 alternate;
+  animation-fill-mode: forwards;
+  animation-delay: 0.7s;
+}
+
+.a3 {
+  left: 30%;
+  transform: scale(0.2);
+  opacity: 1;
+  animation: slideUp 7s linear 1, sideSway 2s ease-in-out 6 alternate;
+  animation-fill-mode: forwards;
+  animation-delay: 0.7s;
+}
+
+.a4 {
+  left: 10%;
+  transform: scale(0.07);
+  opacity: 1;
+  animation: slideUp 3s linear 1, sideSway 2s ease-in-out 6 alternate;
+  animation-fill-mode: forwards;
+  animation-delay: 0.7s;
+}
+
+.a5 {
+  left: 15%;
+  transform: scale(0.08);
+  opacity: 1;
+  animation: slideUp 4s linear 1, sideSway 2s ease-in-out 6 alternate;
+  animation-fill-mode: forwards;
+  animation-delay: 0.7s;
+}
+
+.a6 {
+  left: 10%;
+  transform: scale(0.1);
+  opacity: 1;
+  animation: slideUp 4s linear 1, sideSway 2s ease-in-out 6 alternate;
+  animation-fill-mode: forwards;
+  animation-delay: 0.7s;
+}
+
+@keyframes slideUp {
+  0% {
+    top: 0;
+    opacity: 1; /* Fully visible */
+    transform: scale(1); /* Normal size */
+  }
+  50% {
+    opacity: 0.5; 
+  }
+  100% {
+    top: -600px; /* Moves the hearts off the screen */
+    opacity: 0; /* Fades out completely */
+  }
+}
+
+@keyframes sideSway {
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: 50px;
+  }
+}
+
+body {
+  background-color: black;
+}
+
+.envelope-wrapper {
+  height: 380px;
+}
+
+.stamp {
+  position: absolute;
+  top: 50%; /* Centers the stamp vertically */
+  left: 50%; /* Centers the stamp horizontally */
+  transform: translate(-50%, -50%); /* Adjusts the positioning */
+  width: 60px; /* Adjust width as necessary */
+  height: 60px; /* Maintain aspect ratio */
+  cursor: pointer; /* Makes it clear the stamp can be clicked */
+  z-index: 5; /* Ensure it appears above other elements */
+  border-radius: 50%;
+}
+
+.reset button:hover {
+  background-color: #f3e3d3;
+  color: #fff;
+}
+
+/* Letter Overlay */
+.letter-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* Blackish opaque background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s ease; /* Smooth transition for opacity */
+  opacity: 0; /* Start hidden */
+  z-index: 10; /* Make sure it's above everything else */
+}
+
+.letter-overlay-image {
+  max-width: 90%; /* Covering 90% of the screen */
+  max-height: 90%; /* Maintain aspect ratio */
+  border-radius: 8px; /* Optional: Rounded corners */
+}
+
+.letter-overlay.active {
+  opacity: 1; /* Fully visible when active */
+}
+
+
+/* Add the close button styles */
+.close-button {
+  position: absolute;
+  top: 20px; /* Position at the top-right corner */
+  right: 20px;
+  background-color: transparent;
+  color: white;
+  font-size: 32px;
+  border: none;
+  cursor: pointer;
+  z-index: 20;
+  margin-top: 20px; /* Ensure it appears on top of everything */
+}
+
+.close-button:hover {
+  color: #ff0000; /* Change color on hover for better visibility */
+}
+
+/* Styles for clickable divs */
+.clickable-divs {
+  position: relative;
+}
+
+.clickable-div {
+  position: absolute;
+  cursor: pointer;
+  background-size: contain; /* Ensures the image scales properly */
+  background-position: center;
+  background-repeat: no-repeat; /* Prevents background repetition */
+  height: 40px;
+  width: 50px;
+  margin: 10px 1px;
+  animation: pop 1.5s ease-in-out infinite;
+}
+
+@keyframes pop {
+  0%, 100% {
+    transform: scale(1); /* Normal size */
+  }
+  50% {
+    transform: scale(1.2); /* Scaled up (pop) */
+  }
+}
+
+/* Position each div at different locations */
+
+.div2 {
+  top: 50px;
+  right: 8px;
+}
+
+.div3 {
+
+  top: 120px;
+  right: 8px;
+}
